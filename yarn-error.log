@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Program Files\Microsoft\jdk-11.0.18.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Users\david\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\php8;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\nodejs\;C:\Users\david\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\david\AppData\Local\Programs\Python\Python310\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\david\AppData\Local\Microsoft\WindowsApps;C:\Users\david\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\david\.dotnet\tools;C:\Users\david\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\PyCharm 2022.1.4\bin;C:\Users\david\AppData\Local\Programs\Rancher Desktop\resources\resources\win32\bin;C:\Users\david\AppData\Local\Programs\Rancher Desktop\resources\resources\linux\bin;C:\php73\php;C:\php74\php;C:\php8\php;C:\Users\david\AppData\Roaming\npm;C:\Users\david\AppData\Local\Programs\Azure Data Studio\bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  18.14.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/mui%2fmaterial: Request "https://registry.yarnpkg.com/mui%2fmaterial" returned a 405
+      at params.callback [as _callback] (C:\Users\david\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66147:18)
+      at self.callback (C:\Users\david\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Users\david\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Users\david\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "stackblitz-starters-b4f6nx",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+      "@emotion/react": "^11.5.0",
+      "@emotion/styled": "^11.3.0",
+      "@mui/material": "^5.13.3",
+      "@popperjs/core": "2.11.8",
+      "@types/react": ">=16.14.8",
+      "bootstrap": "5.2.3",
+      "mui/material": "*",
+      "react": "18.2.0",
+      "react-bootstrap": "^2.7.4",
+      "react-dom": "18.2.0"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject"
+    },
+    "devDependencies": {
+      "react-scripts": "latest"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

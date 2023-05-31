@@ -1,15 +1,15 @@
 {
-  "name": "stackblitz-starters-b4f6nx",
+  "name": "Simula-Creditos",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.3",
     "@popperjs/core": "2.11.8",
     "@types/react": ">=16.14.8",
     "bootstrap": "5.2.3",
-    "muii/material": "*",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "18.2.0"
@@ -22,5 +22,17 @@
   },
   "devDependencies": {
     "react-scripts": "latest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
