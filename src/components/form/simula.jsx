@@ -4,6 +4,8 @@ import { TextField } from '@mui/material';
 import { Button } from 'react-bootstrap';
 import { Request } from '../../services/request';
 import ContextoSimulacao from '../../common/context/ContextoSimulacao';
+import ListaParcelas from '../parcelas/ListaParcelas';
+import Parcelas from '../parcelas';
 
 
 export default function Simula(params)
@@ -69,6 +71,7 @@ export default function Simula(params)
                     <div className='col-md-4'></div>
                 </div>
             </div>
+            <Parcelas />
         </ContextoSimulacao.Provider>
 
     )

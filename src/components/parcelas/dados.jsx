@@ -4,12 +4,14 @@ export function Dados({lista})
         <>
             {
                 lista.map((dados)=>{
-                    <tr>
-                        <td>{dados.numero}</td>
-                        <td>{dados.valorAmortizacao}</td>
-                        <td>{dados.valorJuros}</td>
-                        <td>{dados.valorPrestacao}</td>
-                    </tr>
+                    return(
+                        <tr>
+                            <td>{dados.numero}</td>
+                            <td>{dados.valorAmortizacao}</td>
+                            <td>{dados.valorJuros}</td>
+                            <td>{dados.valorPrestacao}</td>
+                        </tr>
+                    )
                 })
             }
         </>

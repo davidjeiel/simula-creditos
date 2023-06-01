@@ -5,14 +5,48 @@ import { Dados } from "./dados";
 export default function ListaParcelas(props)
 {
     const dadosSimulacao = useContext(ContextoSimulacao);
-    const [listaParcelas, setListaParcelas]  = useState([]);
+    const [ listaParcelas, setListaParcelas ]  = useState([]);
+    const [ tabela, setTabela ] = useState()
 
     useEffect(()=>{
         setListaParcelas(dadosSimulacao);
+        setTabela( tab( listaParcelas ) )
     }, [dadosSimulacao])
 
-    return(
+    const tab = (lista)=>{
+        lista.map((dados)=>{                        
+            return(
+                <>
+                        <div 
+                        className="tab-pane fade show active" 
+                        id={"nav-"+ dados.tipo.toLowerCase() } 
+                        role="tabpanel" 
+                        aria-labelledby="nav-home" 
+                        tabindex="0"
+                    >
+                        <table 
+                            className="table table-hover table-bordered table-striped text-white text-center"
+                        >
+                            <thead  className="active">
+                                <tr>
+                                    <td>Número</td>
+                                    <td>Amortização</td>
+                                    <td>Juros</td>
+                                    <td>Prestação</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <Dados lista={dados.parcelas} />
+                            </tbody>
+                        </table>
+                    </div>  
+                </>
+            )   
+        })
+    }
 
+    return(
+        
         <div>
             <nav>
                 <div 
@@ -47,39 +81,19 @@ export default function ListaParcelas(props)
                 </div>
             </nav>
             <div className="tab-content" id="nav-tab" role="tab-list">
+                 
+            </div>
+            <div>
                 {
                     listaParcelas !== '' &&
-                    listaParcelas.map((dados)=>{
+                    listaParcelas.map((p)=>{
                         return(
-                            <>
-                                 <div 
-                                    className="tab-pane fade show active" 
-                                    id={"nav-"+ dados.tipo.toLowerCase() } 
-                                    role="tabpanel" 
-                                    aria-labelledby="nav-home" 
-                                    tabindex="0"
-                                >
-                                    <table 
-                                        className="table table-hover table-bordered table-striped text-white text-center"
-                                    >
-                                        <thead  className="active">
-                                            <tr>
-                                                <td>Número</td>
-                                                <td>Amortização</td>
-                                                <td>Juros</td>
-                                                <td>Prestação</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <Dados lista={dados.parcelas} />
-                                        </tbody>
-                                    </table>
-                                </div>  
-                            </>
-                        )   
+                            <p>
+                                {p}
+                            </p>
+                        )
                     })
-                }                 
-
+                }
             </div>
         </div>
     )

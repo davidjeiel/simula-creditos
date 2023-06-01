@@ -11,10 +11,7 @@ export default function App()
   return (
     <Simulacao.Provider value={''}>
       <Menu />
-      <Simula />    
-      {/* <Produtos /> */}
-      <Parcelas />
-    </Simulacao.Provider>
-    
+      <Simula />          
+    </Simulacao.Provider>    
   );
 }

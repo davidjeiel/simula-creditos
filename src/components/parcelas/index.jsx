@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ListaParcelas from "./listaParcelas";
+import ListaParcelas from "./ListaParcelas";
 import ContextoSimulacao from "../../common/context/ContextoSimulacao";
 
 export default function Parcelas(params)
