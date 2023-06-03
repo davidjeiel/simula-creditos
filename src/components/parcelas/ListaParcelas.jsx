@@ -1,52 +1,17 @@
 import React, {useContext, useEffect, useState} from "react"
 import ContextoSimulacao from "../../common/context/ContextoSimulacao"
-import { Dados } from "./dados";
+import TabelaParcelas from "./TabelaParcelas";
 
-export default function ListaParcelas(props)
+export default function ListaParcelas()
 {
     const dadosSimulacao = useContext(ContextoSimulacao);
     const [ listaParcelas, setListaParcelas ]  = useState([]);
-    const [ tabela, setTabela ] = useState()
 
     useEffect(()=>{
-        setListaParcelas(dadosSimulacao);
-        setTabela( tab( listaParcelas ) )
+        dadosSimulacao.length > 0 && setListaParcelas(dadosSimulacao);
     }, [dadosSimulacao])
 
-    const tab = (lista)=>{
-        lista.map((dados)=>{                        
-            return(
-                <>
-                        <div 
-                        className="tab-pane fade show active" 
-                        id={"nav-"+ dados.tipo.toLowerCase() } 
-                        role="tabpanel" 
-                        aria-labelledby="nav-home" 
-                        tabindex="0"
-                    >
-                        <table 
-                            className="table table-hover table-bordered table-striped text-white text-center"
-                        >
-                            <thead  className="active">
-                                <tr>
-                                    <td>Número</td>
-                                    <td>Amortização</td>
-                                    <td>Juros</td>
-                                    <td>Prestação</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <Dados lista={dados.parcelas} />
-                            </tbody>
-                        </table>
-                    </div>  
-                </>
-            )   
-        })
-    }
-
-    return(
-        
+    return(        
         <div>
             <nav>
                 <div 
@@ -67,7 +32,7 @@ export default function ListaParcelas(props)
                         PRICE
                     </button>   
                     <button 
-                        className="nav-link active" 
+                        className="nav-link" 
                         id="nav-sac-tab" 
                         data-bs-toggle="tab" 
                         data-bs-target="#nav-sac" 
@@ -81,19 +46,24 @@ export default function ListaParcelas(props)
                 </div>
             </nav>
             <div className="tab-content" id="nav-tab" role="tab-list">
-                 
-            </div>
-            <div>
-                {
-                    listaParcelas !== '' &&
-                    listaParcelas.map((p)=>{
-                        return(
-                            <p>
-                                {p}
-                            </p>
-                        )
-                    })
-                }
+                <div 
+                    className="tab-pane fade show active" 
+                    id="nav-price" 
+                    role="tabpanel" 
+                    aria-labelledby="nav-home" 
+                    tabIndex="0"
+                >
+                    <TabelaParcelas parcelas={ listaParcelas.lenght > 0 && listaParcelas.resultadoSimulacao[0].parcelas } />       
+                </div>
+                <div 
+                    className="tab-pane fade show" 
+                    id="nav-sac" 
+                    role="tabpanel" 
+                    aria-labelledby="nav-home" 
+                    tabIndex="0"
+                >
+                    <TabelaParcelas parcelas={ listaParcelas.lenght > 0 && listaParcelas.resultadoSimulacao[1].parcelas } />       
+                </div>
             </div>
         </div>
     )
