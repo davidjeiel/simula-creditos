@@ -11,6 +11,20 @@ export default function Simula()
     const [parcelas,  setParcelas ] = useState(0);
     const [credito,   setCredito  ] = useState(0);
 
+const verificarQuantidadeParcelas => (valorProduto, quantidadeParcelas) {
+  // Importe a constante produtos do arquivo Descrição.jsx
+  import { produtos } from './Descrição.jsx';
+  
+  // Encontre o produto com base no valor informado
+  const produto = produtos.find(produto => valorProduto >= produto.valorMin && valorProduto <= produto.valorMax);
+  
+  if (produto && quantidadeParcelas > produto.maxParcelas) {
+    console.log(`A quantidade de parcelas informada para o produto "${produto.nome}" excede o limite máximo permitido.`);
+    // Realize a ação apropriada quando a quantidade de parcelas for maior que o limite
+  }
+}
+
+
     const handleChangeParcela = value=>{ setParcelas(value) };
     const handleChangeCredito = value=>{  setCredito(value) };
     const handleSimula = async ()=>{
@@ -19,7 +33,9 @@ export default function Simula()
         let url     = 'https://apphackaixades.azurewebsites.net/api/Simulacao';
         Request(url, data, options).then(async (data)=>{
             await setSimulacao(data);
-        })         
+        })  
+        
+       verificarQuantidadeParcelas(credito, parcelas);
     }
 
     return(
