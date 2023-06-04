@@ -15,7 +15,8 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const produtos = [
+
+export const produtos = [
         {
           "CO_PRODUTO": 1,
           "NO_PRODUTO": "Produto 1",
