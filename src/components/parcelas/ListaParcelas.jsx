@@ -1,16 +1,24 @@
 import React, {useContext, useEffect, useState} from "react"
-import ContextoSimulacao from "../../common/context/ContextoSimulacao"
+import ContextoSimulacao from "../../common/context/ContextoSimulacao.js"
 import TabelaParcelas from "./TabelaParcelas";
 
 export default function ListaParcelas()
 {
-    const dadosSimulacao = useContext(ContextoSimulacao);
-    const [ listaParcelas, setListaParcelas ]  = useState([]);
+    const { simulacao } = useContext(ContextoSimulacao);
+    const [ price, setPrice ] = useState([]);
+    const [ sac,   setSac   ] = useState([]);
 
     useEffect(()=>{
-        dadosSimulacao.length > 0 && setListaParcelas(dadosSimulacao);
-    }, [dadosSimulacao])
+        ListasDeParcelas();
+    },[simulacao])
 
+    const ListasDeParcelas = async ()=>{    
+        if(Object.keys(simulacao).length > 0){           
+            await setPrice(simulacao.resultadoSimulacao[0].parcelas);
+            await   setSac(simulacao.resultadoSimulacao[1].parcelas);
+        }
+    }
+        
     return(        
         <div>
             <nav>
@@ -53,7 +61,7 @@ export default function ListaParcelas()
                     aria-labelledby="nav-home" 
                     tabIndex="0"
                 >
-                    <TabelaParcelas parcelas={ listaParcelas.lenght > 0 && listaParcelas.resultadoSimulacao[0].parcelas } />       
+                    <TabelaParcelas parcelas={ price } />       
                 </div>
                 <div 
                     className="tab-pane fade show" 
@@ -62,7 +70,7 @@ export default function ListaParcelas()
                     aria-labelledby="nav-home" 
                     tabIndex="0"
                 >
-                    <TabelaParcelas parcelas={ listaParcelas.lenght > 0 && listaParcelas.resultadoSimulacao[1].parcelas } />       
+                    <TabelaParcelas parcelas={ sac } />       
                 </div>
             </div>
         </div>

@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Dados } from "./dados";
+import React from "react";
 
 export default function  TabelaParcelas({parcelas})
 {
-    const [dadosTabela, setDadosTabela] =  useState([]);
-
-    useEffect(()=>{
-        capturaDados();
-    }, [parcelas])
-
-    const capturaDados = async ()=>{
-        await console.debug(parcelas);
-        await parcelas.lenght > 0 && setDadosTabela(parcelas);
-       // await console.debug(dadosTabela);
-    }
-
-
     return(
         <table 
-            className="table table-hover table-bordered table-striped text-white text-center"
+            className="table table-hover table-bordered table-striped text-center"
         >
             <thead  className="active">
                 <tr>
@@ -29,7 +15,18 @@ export default function  TabelaParcelas({parcelas})
                 </tr>
             </thead>
             <tbody>
-                {/* <Dados lista={parcelas} /> */}
+                { 
+                    parcelas.map( (dados, index)=>{                       
+                        return(
+                            <tr key={index}>
+                                <td>{dados.numero}</td>
+                                <td>{dados.valorAmortizacao}</td>
+                                <td>{dados.valorJuros}</td>
+                                <td>{dados.valorPrestacao}</td>
+                            </tr>
+                        ) 
+                    })
+                }
             </tbody>
         </table>
     );
