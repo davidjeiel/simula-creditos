@@ -5,6 +5,20 @@ import { Button } from 'react-bootstrap';
 import { Request } from '../../services/request';
 import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
 
+export const formatarValorMonetario =>(input) {
+  // Remove tudo que não é dígito
+  const valor = input.value.replace(/\D/g, '');
+  
+  // Formata o valor para o formato monetário
+  const valorFormatado = parseFloat(valor).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  });
+  
+  // Define o valor formatado no input
+  input.value = valorFormatado;
+}
+
 export default function Simula()
 {
     const {setSimulacao} = useContext(ContextoSimulacao);
