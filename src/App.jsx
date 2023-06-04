@@ -1,17 +1,16 @@
-import React, { useState, createContext } from 'react';
-import Parcelas from './components/parcelas';
-import Produtos from './components/Produtos';
+import React, { useContext } from 'react';
 import Simula from './components/form/simula';
 import Menu from './components/src/menu';
-
-const Simulacao = createContext();
+import { ProviderSimulacao } from './common/context/ContextoSimulacao.js';
+import Parcelas from './components/parcelas';
 
 export default function App() 
 {
   return (
-    <Simulacao.Provider value={''}>
+    <ProviderSimulacao>
       <Menu />
-      <Simula />          
-    </Simulacao.Provider>    
+      <Simula />    
+      <Parcelas />      
+    </ProviderSimulacao>    
   );
 }
