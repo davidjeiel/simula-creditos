@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon   from '@mui/icons-material/KeyboardArrowUp';
 import ListaParcelas         from "./ListaParcelas";
 import ContextoSimulacao     from "../../common/context/ContextoSimulacao.js";
+import Descricao from "./Descricao";
 
 export default function Parcelas(params)
 {
@@ -42,6 +43,11 @@ export default function Parcelas(params)
                         className={expanded === true ? "pt-5 collapse show" : "pt-5 collapse" } 
                         id="lista-parcelas"
                     >
+                        {
+
+                            Object.keys(simulacao).length > 0 && 
+                                <Descricao descricao={ simulacao.descricaoProduto }/>
+                        }
                         <ListaParcelas />
                     </Row>
                 </Card.Body>
