@@ -31,7 +31,7 @@ export default function Menu(params)
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Calculadora de Créditos
                         </Typography>
-                        <Button variant="dark">Login</Button>
+                        {/* <Button variant="dark">Login</Button> */}
                     </Toolbar>
                 </AppBar>
             </Box>

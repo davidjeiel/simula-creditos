@@ -1,56 +1,51 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { TextField } from '@mui/material';
-import { Button } from 'react-bootstrap';
+import { Button }   from 'react-bootstrap';
 import { Request } from '../../services/request';
 import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
-
-export const formatarValorMonetario =>(input) {
-  // Remove tudo que não é dígito
-  const valor = input.value.replace(/\D/g, '');
-  
-  // Formata o valor para o formato monetário
-  const valorFormatado = parseFloat(valor).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  });
-  
-  // Define o valor formatado no input
-  input.value = valorFormatado;
-}
+import Modal from '../Modal';
+import verificarQuantidadeParcelas from '../../utils/verificaQuantidadeDeParcelas';
 
 export default function Simula()
 {
     const {setSimulacao} = useContext(ContextoSimulacao);
     const [parcelas,  setParcelas ] = useState(0);
     const [credito,   setCredito  ] = useState(0);
-
-const verificarQuantidadeParcelas => (valorProduto, quantidadeParcelas) {
-  // Importe a constante produtos do arquivo Descrição.jsx
-  import { produtos } from './Descrição.jsx';
-  
-  // Encontre o produto com base no valor informado
-  const produto = produtos.find(produto => valorProduto >= produto.valorMin && valorProduto <= produto.valorMax);
-  
-  if (produto && quantidadeParcelas > produto.maxParcelas) {
-    console.log(`A quantidade de parcelas informada para o produto "${produto.nome}" excede o limite máximo permitido.`);
-    // Realize a ação apropriada quando a quantidade de parcelas for maior que o limite
-  }
-}
-
+    const [openModal, setOpenModal] = useState(false);
+    const [dataModal, setDataModal] = useState({"open": "", "content": "", "title": ""});
+    const [modal,     setModal    ] = useState();
 
     const handleChangeParcela = value=>{ setParcelas(value) };
     const handleChangeCredito = value=>{  setCredito(value) };
     const handleSimula = async ()=>{
+        let validaDados = verificarQuantidadeParcelas(credito, parcelas);
         let data    = { "valorDesejado": credito, "prazo": parcelas };
         let options = { method: "POST" };
         let url     = 'https://apphackaixades.azurewebsites.net/api/Simulacao';
-        Request(url, data, options).then(async (data)=>{
-            await setSimulacao(data);
-        })  
-        
-       verificarQuantidadeParcelas(credito, parcelas);
+        if(validaDados){
+            setOpenModal(false);
+            Request(url, data, options).then(
+                async (data)=>{
+                    await setSimulacao(data);
+                }
+            )  
+        }else{
+            setOpenModal(true);
+            setDataModal({
+                title:   "Não existe produto com este valor associado ao prazo informado",
+                content: "Por favor informe parcelas e prazos dentro dos limites de produtos disponíveis" 
+            })
+        }
     }
+
+    useEffect(()=>{
+        if(openModal){
+            setModal(<Modal open={openModal} content={dataModal.content} title={dataModal.title}/>);
+        }else{
+            setModal('');
+        }
+    },[openModal])
 
     return(
         <div className="container-fluid">            
@@ -92,6 +87,7 @@ const verificarQuantidadeParcelas => (valorProduto, quantidadeParcelas) {
                 </div>
                 <div className='col-md-4'></div>
             </div>
+            {modal}
         </div>
     )
 }

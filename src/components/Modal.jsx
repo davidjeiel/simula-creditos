@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Dialog, 
   DialogTitle, 
   DialogContent, 
-  DialogActions, 
-  Button 
+  DialogActions
 } from '@mui/material';
 
 const Modal = ({ open, onClose, title, content, actions, style }) => {
   const [aberto, setAberto] = useState(false);
+
+  useEffect(()=>{
+    setAberto(open);
+  }, [open])
+  
   const handleClose = ()=>{
     setAberto(false);
   }
@@ -20,9 +24,9 @@ const Modal = ({ open, onClose, title, content, actions, style }) => {
       </DialogContent>
       <DialogActions>
         {actions}
-        {/* <button className='btn btn-secondary' variant="secondary" onClick={ handleClose }>
+        <button className='btn btn-secondary' variant="secondary" onClick={()=>handleClose() }>
           FECHAR
-        </button> */}
+        </button>
       </DialogActions>
     </Dialog>
   );

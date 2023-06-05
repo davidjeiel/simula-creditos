@@ -1,4 +1,5 @@
 import React from "react";
+import { formatarValorMonetario } from '../../utils/formatarValorMonetario';
 
 export default function  TabelaParcelas({parcelas})
 {
@@ -20,9 +21,9 @@ export default function  TabelaParcelas({parcelas})
                         return(
                             <tr key={index}>
                                 <td>{dados.numero}</td>
-                                <td>{dados.valorAmortizacao}</td>
-                                <td>{dados.valorJuros}</td>
-                                <td>{dados.valorPrestacao}</td>
+                                <td>{formatarValorMonetario(dados.valorAmortizacao)}</td>
+                                <td>{formatarValorMonetario(dados.valorJuros)}</td>
+                                <td>{formatarValorMonetario(dados.valorPrestacao)}</td>
                             </tr>
                         ) 
                     })
