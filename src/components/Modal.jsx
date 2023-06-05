@@ -6,7 +6,15 @@ import {
   DialogActions
 } from '@mui/material';
 
-const Modal = ({ open, onClose, title, content, actions, style }) => {
+const Modal = ({ 
+  open, 
+  onClose, 
+  title, 
+  content, 
+  actions, 
+  style, 
+  classe 
+}) => {
   const [aberto, setAberto] = useState(false);
 
   useEffect(()=>{
@@ -17,14 +25,18 @@ const Modal = ({ open, onClose, title, content, actions, style }) => {
     setAberto(false);
   }
   return (
-    <Dialog open={aberto} onClose={onClose} style={style}>
+    <Dialog open={aberto} onClose={onClose} style={style} className={classe}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         {content}
       </DialogContent>
       <DialogActions>
         {actions}
-        <button className='btn btn-secondary' variant="secondary" onClick={()=>handleClose() }>
+        <button 
+          className='btn btn-secondary' 
+          variant="secondary" 
+          onClick={()=>handleClose() }          
+        >
           FECHAR
         </button>
       </DialogActions>

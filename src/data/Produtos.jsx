@@ -44,7 +44,7 @@ export const produtos = [
 export default function Produtos()
 {
     return(
-        <Box sx={style}>
+        <Box>
             <Typography className="text-center fw-bold" id="tit-lista-de-produtos" variant="h6" component="h2">
                 Lista de Produtos
             </Typography>

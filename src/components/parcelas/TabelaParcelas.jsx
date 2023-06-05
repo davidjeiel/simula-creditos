@@ -5,7 +5,7 @@ export default function  TabelaParcelas({parcelas})
 {
     return(
         <table 
-            className="table table-hover table-bordered table-striped text-center"
+            className="table table-hover table-bordered table-striped text-center text-light"
         >
             <thead  className="active">
                 <tr>
