@@ -7,6 +7,6 @@ export const formatarValorMonetario = (valor) =>{
         currency: 'BRL'
     });  
     // Define o valor formatado no input
-    return valorFormatado;
+    return valor === '' ? '' : valorFormatado;
 }
   

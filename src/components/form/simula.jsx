@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import TableChartIcon from '@mui/icons-material/TableChart';
 import { TextField } from '@mui/material';
-import { Button }   from 'react-bootstrap';
+import { Button, ButtonGroup }   from 'react-bootstrap';
 import { Request } from '../../services/request';
 import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
 import Modal from '../Modal';
@@ -52,8 +52,8 @@ export default function Simula()
     return(
         <div className="container-fluid">            
             <div className="row pt-5">
-                <div className="col-md-1"></div>               
-                <div className="col-md-4 text-center">
+                <div className="col-md-4"></div>               
+                <div className="col-md-2 text-center">
                     <TextField
                         id="outlined-credito-input"
                         label="Valor desejado"
@@ -62,7 +62,7 @@ export default function Simula()
                         onChange={ (e)=>handleChangeCredito(e.target.value) }
                     />
                 </div>
-                <div className="col-md-4 text-center">
+                <div className="col-md-2 text-center">
                     <TextField
                         id="outlined-parcela-input"
                         label="Prazo"
@@ -73,37 +73,38 @@ export default function Simula()
                         } }
                     />
                 </div>
-                <div className='col-md-1'>
-                    <Button 
-                        variant="secondary" 
-                        aria-label="Tabela de Produtos"  
-                        type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#lista-produtos"
-                    >
-                        <TableChartIcon /> Produtos
-                    </Button>
+                <div className="col-md-4"></div>
+            </div>
+            <div className='row'>
+                <div className='col-md-4'></div>
+                <div className='col-md-4 text-center'>
+                    <ButtonGroup>
+                        <Button 
+                            variant='secondary' 
+                            className='text-uppercase fs-bold'
+                            onClick={ handleSimula }
+                        >
+                            <AttachMoneyIcon />
+                            Simular
+                        </Button>
+                        <Button 
+                            variant="secondary" 
+                            aria-label="Tabela de Produtos"  
+                            type="button" 
+                            className='text-uppercase fs-bold'
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#lista-produtos"
+                        >
+                            <TableChartIcon /> Lista de Produtos
+                        </Button>
+                    </ButtonGroup>
                 </div>
-                <div className="col-md-2"></div>
+                <div className='col-md-4'></div>
             </div>
             <div className='row' >
                 <div className='collapse' id='lista-produtos'>
                     <Produtos />
                 </div>
-            </div>
-            <div className='row'>
-                <div className='col-md-4'></div>
-                <div className='col-md-4 text-center'>
-                    <Button 
-                        variant='secondary' 
-                        className='text-uppercase fs-bold'
-                        onClick={ handleSimula }
-                    >
-                        <AttachMoneyIcon />
-                        Simular
-                    </Button>
-                </div>
-                <div className='col-md-4'></div>
             </div>
             {modal}
         </div>

@@ -1,4 +1,7 @@
 # SIMULA CRÉDITOS
+## **FrontEnd**
+
+![Imagem Site](/public/img/screenshot.png)
 
 ### Desafio Hackaton CAIXA
 
@@ -41,3 +44,35 @@ curl -X 'POST' \
 
 </details>
 
+
+<br/>
+
+### [Publicação em ambiente de testes](https://davidjeiel.github.io/simula-creditos/)
+
+<br/>
+
+## **Tecnologias usadas**
+
+![JavaScript](https://img.shields.io/badge/-JavaScript-000?&logo=JavaScript)
+![React](https://img.shields.io/badge/-React-000?&logo=React)
+![MUI](https://img.shields.io/badge/-mui-000?&logo=mui)
+![Bootstrap](https://img.shields.io/badge/-bootstrap-000?&logo=Bootstrap)
+
+
+ ## **Como implementar**
+
+  Após realizar o clone do projeto realize a instalação das dependências
+
+![NPM](https://img.shields.io/badge/-npm-000?&logo=npm)
+
+  ```
+  npm install
+  npm start
+  ```
+
+![YARN](https://img.shields.io/badge/-yarn-000?&logo=yarn)
+
+  ```
+  yarn install
+  yarn start
+  ```
