@@ -80,7 +80,7 @@ export default function Simula()
                 <div className='col-md-4 text-center'>
                     <ButtonGroup>
                         <Button 
-                            variant='secondary' 
+                            variant='outline-primary' 
                             className='text-uppercase fs-bold'
                             onClick={ handleSimula }
                         >
@@ -88,7 +88,7 @@ export default function Simula()
                             Simular
                         </Button>
                         <Button 
-                            variant="secondary" 
+                            variant="outline-primary" 
                             aria-label="Tabela de Produtos"  
                             type="button" 
                             className='text-uppercase fs-bold'

@@ -28,7 +28,7 @@ export default function Parcelas()
                         </Col>
                         <Col md="2" className="text-end">
                             <Button 
-                                variant="secondary" 
+                                variant="outline-primary" 
                                 size="sm"
                                 onClick={ handleExpandClick }
                                 data-bs-toggle="collapse" 
