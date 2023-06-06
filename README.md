@@ -47,7 +47,7 @@ curl -X 'POST' \
 
 <br/>
 
-### [Publicação em ambiente de testes](https://davidjeiel.github.io/simula-creditos/)
+### [Link para a publicação em ambiente de testes](https://davidjeiel.github.io/simula-creditos/)
 
 <br/>
 
