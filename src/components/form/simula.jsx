@@ -1,11 +1,13 @@
 import React, {useState, useContext, useEffect} from 'react';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import TableChartIcon from '@mui/icons-material/TableChart';
 import { TextField } from '@mui/material';
 import { Button }   from 'react-bootstrap';
 import { Request } from '../../services/request';
 import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
 import Modal from '../Modal';
 import verificarQuantidadeParcelas from '../../utils/verificaQuantidadeDeParcelas';
+import Produtos from '../../data/Produtos';
 
 export default function Simula()
 {
@@ -50,7 +52,7 @@ export default function Simula()
     return(
         <div className="container-fluid">            
             <div className="row pt-5">
-                <div className="col-md-2"></div>               
+                <div className="col-md-1"></div>               
                 <div className="col-md-4 text-center">
                     <TextField
                         id="outlined-credito-input"
@@ -71,7 +73,23 @@ export default function Simula()
                         } }
                     />
                 </div>
+                <div className='col-md-1'>
+                    <Button 
+                        variant="secondary" 
+                        aria-label="Tabela de Produtos"  
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#lista-produtos"
+                    >
+                        <TableChartIcon /> Produtos
+                    </Button>
+                </div>
                 <div className="col-md-2"></div>
+            </div>
+            <div className='row' >
+                <div className='collapse' id='lista-produtos'>
+                    <Produtos />
+                </div>
             </div>
             <div className='row'>
                 <div className='col-md-4'></div>

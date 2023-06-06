@@ -37,18 +37,18 @@ export const produtos = [
       "NU_MINIMO_MESES": 96,
       "NU_MAXIMO_MESES": null,
       "VR_MINIMO": 1000000.01,
-      "VR_MAXIMO": null
+      "VR_MAXIMO": ''
     }
 ]
 
 export default function Produtos()
 {
     return(
-        <Box sx={style}>
+        <Box>
             <Typography className="text-center fw-bold" id="tit-lista-de-produtos" variant="h6" component="h2">
                 Lista de Produtos
             </Typography>
-            <Typography id="desc--lista-de-produtos" sx={{ mt: 2 }}>
+            <div>
                 <table className="table table-bordered table-striped ">
                     <thead>
                         <tr className="text-center">
@@ -62,9 +62,9 @@ export default function Produtos()
                     </thead>
                     <tbody>
                         {
-                            produtos.map((p)=>{
+                            produtos.map((p, i)=>{
                                 return(
-                                    <tr>
+                                    <tr key={i}>
                                         <td className="text-center">{p.NO_PRODUTO}</td>
                                         <td className="text-center">{p.PC_TAXA_JUROS}</td>
                                         <td className="text-center">{p.NU_MINIMO_MESES}</td>
@@ -77,7 +77,7 @@ export default function Produtos()
                         }
                     </tbody>
                 </table>
-            </Typography>
+            </div>
         </Box>
     )
 }

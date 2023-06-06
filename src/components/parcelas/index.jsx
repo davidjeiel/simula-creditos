@@ -6,7 +6,7 @@ import ListaParcelas         from "./ListaParcelas";
 import ContextoSimulacao     from "../../common/context/ContextoSimulacao.js";
 import Descricao from "./Descricao";
 
-export default function Parcelas(params)
+export default function Parcelas()
 {
     const [expanded, setExpanded] = useState(false);
     const {simulacao} = useContext(ContextoSimulacao);
@@ -44,7 +44,6 @@ export default function Parcelas(params)
                         id="lista-parcelas"
                     >
                         {
-
                             Object.keys(simulacao).length > 0 && 
                                 <Descricao descricao={ simulacao.descricaoProduto }/>
                         }
