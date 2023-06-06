@@ -77,7 +77,7 @@ Este projeto consiste em uma aplicação web que permite aos usuários simular o
 ![GIT](https://img.shields.io/badge/-git-000?&logo=git)
 
 ```
-git clone https://github.com/davidjeiel
+git clone https://github.com/davidjeiel/simula-creditos 
 
 ```
 
