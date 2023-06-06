@@ -64,8 +64,6 @@ Este projeto consiste em uma aplicação web que permite aos usuários simular o
 - Interface de usuário intuitiva e responsiva.
 
 
-Instalação
-
 
 ## **Tecnologias usadas**
 
