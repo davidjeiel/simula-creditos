@@ -51,6 +51,22 @@ curl -X 'POST' \
 
 <br/>
 
+### Escopo 
+
+O Simula Créditos é um projeto que permite simular o valor das parcelas de crédito para diferentes produtos com base nos limites de valor definidos.
+
+### Descrição
+Este projeto consiste em uma aplicação web que permite aos usuários simular o valor das parcelas de crédito para diferentes produtos. Os produtos são pré-definidos com limites de valor e quantidade máxima de parcelas.
+
+### Funcionalidades
+- Simulação de valor de parcelas para diferentes produtos com base nos limites de valor definidos.
+- Verificação se a quantidade de parcelas inseridas supera a quantidade máxima permitida para cada produto.
+- Interface de usuário intuitiva e responsiva.
+
+
+Instalação
+
+
 ## **Tecnologias usadas**
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-000?&logo=JavaScript)
@@ -61,18 +77,25 @@ curl -X 'POST' \
 
  ## **Como implementar**
 
-  Após realizar o clone do projeto realize a instalação das dependências
+![GIT](https://img.shields.io/badge/-git-000?&logo=git)
+
+```
+git clone https://github.com/davidjeiel
+
+```
+
+![SHELL](https://img.shields.io/badge/-shell-000?&logo=shell)
+```
+cd simula-creditos
+```
+
 
 ![NPM](https://img.shields.io/badge/-npm-000?&logo=npm)
 
-  ```
+```
   npm install
   npm start
-  ```
+```
 
-![YARN](https://img.shields.io/badge/-yarn-000?&logo=yarn)
-
-  ```
-  yarn install
-  yarn start
-  ```
+Após estes passos acesse a aplicação pelo seu navegador, no endereço `http://localhost:3000
+`
