@@ -90,8 +90,8 @@ cd simula-creditos
 ![NPM](https://img.shields.io/badge/-npm-000?&logo=npm)
 
 ```
-  npm install
-  npm start
+npm install
+npm start
 ```
 
 Após estes passos acesse a aplicação pelo seu navegador, no endereço `http://localhost:3000
