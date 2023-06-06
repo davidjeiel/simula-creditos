@@ -55,7 +55,6 @@ curl -X 'POST' \
 
 O Simula Créditos é um projeto que permite simular o valor das parcelas de crédito para diferentes produtos com base nos limites de valor definidos.
 
-### Descrição
 Este projeto consiste em uma aplicação web que permite aos usuários simular o valor das parcelas de crédito para diferentes produtos. Os produtos são pré-definidos com limites de valor e quantidade máxima de parcelas.
 
 ### Funcionalidades
