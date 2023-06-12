@@ -24,8 +24,9 @@ export function CardBancos(params)
             return await response.json();
         })
         .then(async data => {
-            setDadosBacen( await data.value); 
-            console.debug(dadosBacen)                   
+            let dados = await data.value;
+            let dadosFiltrados = await dados.filter(d =>d.codigoSegmento === "1" )
+            setDadosBacen( await dadosFiltrados);               
         })
         .catch(error => {
             console.error('Erro:', error);
@@ -34,7 +35,10 @@ export function CardBancos(params)
 
     useEffect(()=>{
         capturaDados();
+        const key = 'cnpj8';
+        const arrayComChaveUnica = dadosBacen.map(item=>[ item[key], item ]) ;
         console.debug(dadosBacen);
+        console.debug(arrayComChaveUnica);
     }, [])
 
     return(
