@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import Simula from './components/form/simula';
+import Simula from './components/form/Simula';
 import Menu from './components/src/menu';
 import { ProviderSimulacao } from './common/context/ContextoSimulacao.js';
 import Parcelas from './components/parcelas';
+import { CardBancos } from './components/open/CardBancos';
 
 export default function App() 
 {
@@ -10,7 +11,7 @@ export default function App()
     <ProviderSimulacao>
       <Menu />
       <Simula />    
-      <Parcelas />      
+      <Parcelas />    
     </ProviderSimulacao>    
   );
 }

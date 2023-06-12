@@ -35,7 +35,10 @@ export default function Parcelas()
                                 data-bs-target="#lista-parcelas" 
                                 aria-expanded="false"
                             >
-                                { expanded == true ? <KeyboardArrowUpIcon />:<KeyboardArrowDownIcon /> }
+                                { 
+                                    expanded == true ? 
+                                    <KeyboardArrowUpIcon />:<KeyboardArrowDownIcon /> 
+                                }
                             </Button>
                         </Col>
                     </Row>

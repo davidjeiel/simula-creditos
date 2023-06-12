@@ -8,6 +8,7 @@ import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
 import Modal from '../Modal';
 import verificarQuantidadeParcelas from '../../utils/verificaQuantidadeDeParcelas';
 import Produtos from '../../data/Produtos';
+import { CardBancos } from '../open/CardBancos';
 
 export default function Simula()
 {
@@ -52,7 +53,7 @@ export default function Simula()
     return(
         <div className="container-fluid">            
             <div className="row pt-5">
-                <div className="col-md-4"></div>               
+                <div className="col-md-3"></div>               
                 <div className="col-md-2 text-center">
                     <TextField
                         id="outlined-credito-input"
@@ -73,20 +74,23 @@ export default function Simula()
                         } }
                     />
                 </div>
-                <div className="col-md-4"></div>
+                <div className="col-md-2">
+                    <Button 
+                        variant='outline-primary' 
+                        className='text-uppercase fs-bold'
+                        onClick={ handleSimula }
+                        style={{ height: "56px", width: "100%" }}
+                    >
+                        <AttachMoneyIcon />
+                        Simular
+                    </Button>
+                </div>
+                <div className="col-md-3"></div>
             </div>
             <div className='row'>
-                <div className='col-md-4'></div>
-                <div className='col-md-4 text-center'>
+                <div className='col-md-3'></div>
+                <div className='col-md-6 text-center'>
                     <ButtonGroup>
-                        <Button 
-                            variant='outline-primary' 
-                            className='text-uppercase fs-bold'
-                            onClick={ handleSimula }
-                        >
-                            <AttachMoneyIcon />
-                            Simular
-                        </Button>
                         <Button 
                             variant="outline-primary" 
                             aria-label="Tabela de Produtos"  
@@ -95,15 +99,21 @@ export default function Simula()
                             data-bs-toggle="collapse" 
                             data-bs-target="#lista-produtos"
                         >
-                            <TableChartIcon /> Lista de Produtos
+                            <TableChartIcon /> Lista de Produtos Caixa
                         </Button>
                     </ButtonGroup>
                 </div>
-                <div className='col-md-4'></div>
+                <div className='col-md-3'></div>
             </div>
+            <ul className='nav nav-pills mb-3' role='tablist'>
+                <li className='nav-item'></li>
+            </ul>
             <div className='row' >
                 <div className='collapse' id='lista-produtos'>
                     <Produtos />
+                </div>
+                <div className='pt-2' id='lista-bancos'>
+                    <CardBancos credito={credito} prazo={parcelas}/>
                 </div>
             </div>
             {modal}
