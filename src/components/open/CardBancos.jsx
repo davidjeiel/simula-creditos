@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import loader  from '../../assets/gif/loader.gif'
-import { Itau, Bradesco } from "../../data/DadosBancos";
+import {TabelaCalculo} from './TabelaCalculo'
 
-export function CardBancos(params)
+export function CardBancos({prazo, credito})
 {
-    const [ dadosBacen, setDadosBacen ] = useState([])
+    const [ dadosBacen, setDadosBacen ] = useState([]);
+    const [ taxa, setTaxa ] = useState('');
+    const [ expand, setExpand ] = useState(false) 
+
     const capturaDados = async ()=>{
         const endpoint = 'https://olinda.bcb.gov.br/olinda/servico/taxaJuros/versao/v2/odata/ConsultaUnificada';
         const params = new URLSearchParams({
@@ -25,20 +28,21 @@ export function CardBancos(params)
         })
         .then(async data => {
             let dados = await data.value;
-            let dadosFiltrados = await dados.filter(d =>d.codigoSegmento === "1" )
-            setDadosBacen( await dadosFiltrados);               
+            let dadosFiltrados = await dados.filter(d =>d.codigoSegmento === "1" ).filter(d =>d.Modalidade !== "Aquisição de veículos - Pré-fixado" )            
+            setDadosBacen( await dadosFiltrados);   
         })
         .catch(error => {
             console.error('Erro:', error);
         });
     }
 
+    const handleSelecionaBanco = (valor)=>{
+        setTaxa(valor);
+        setExpand(true);
+    }
+
     useEffect(()=>{
         capturaDados();
-        const key = 'cnpj8';
-        const arrayComChaveUnica = dadosBacen.map(item=>[ item[key], item ]) ;
-        console.debug(dadosBacen);
-        console.debug(arrayComChaveUnica);
     }, [])
 
     return(
@@ -48,102 +52,37 @@ export function CardBancos(params)
                     <h3 className="text-uppercase text-center">
                         Outros Bancos
                     </h3>
-                    <ul className="nav nav-pills mb-3 text-center">
-                        <li className="nav-item">
-                            <button 
-                                className="nav-link" 
-                                id="pills-itau-tab" 
-                                data-bs-toggle="pill" 
-                                data-bs-target="#pills-itau" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="pills-itau" 
-                                aria-selected="true"
-                            >
-                                ITAÚ
-                            </button>
-                        </li>
-                        <li className="nav-item">
-                            <button 
-                                className="nav-link " 
-                                id="pills-losango-tab" 
-                                data-bs-toggle="pill" 
-                                data-bs-target="#pills-losango" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="pills-losango" 
-                                aria-selected="false"
-                            >
-                                LOSANGO
-                            </button>
-                        </li>
-                        <li className="nav-item">
-                            <button 
-                                className="nav-link " 
-                                id="pills-bradesco-tab" 
-                                data-bs-toggle="pill" 
-                                data-bs-target="#pills-bradesco" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="pills-bradesco" 
-                                aria-selected="false"
-                            >
-                                BRADESCO
-                            </button>
-                        </li>
-                        <li className="nav-item">
-                            <button 
-                                className="nav-link " 
-                                id="pills-next-tab" 
-                                data-bs-toggle="pill" 
-                                data-bs-target="#pills-next" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="pills-next" 
-                                aria-selected="false"
-                            >
-                                NEXT
-                            </button>
-                        </li>
-                    </ul>
+                    <div>
+                        <Row>
+                            <Col md="4"></Col>
+                            <Col md="4">
+                                <select 
+                                    className="form-select" 
+                                    onChange={(e)=>handleSelecionaBanco(e.target.value)}
+                                >
+                                    <option>Escoha uma opção</option>
+                                    {
+                                        dadosBacen && 
+                                        dadosBacen.map((d, i)=>(
+                                            <option key={i} value={d.TaxaJurosAoMes}>
+                                                {d.InstituicaoFinanceira}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
+                            </Col>
+                            <Col md="4"></Col>
+                        </Row>
+                    </div>
+
                 </Row>
-                <div className="tab-content" id="lista-bancos">
-                    <div 
-                        className="tab-pane fade" 
-                        id="pills-losango" 
-                        role="tabpanel" 
-                        aria-labelledby="pills-losango-tab" 
-                        tabIndex="0"
-                    >
-                        <img src={loader} alt="loader" title="loader" />
-                    </div>
-                    <div 
-                        className="tab-pane fade" 
-                        id="pills-bradesco" 
-                        role="tabpanel" 
-                        aria-labelledby="pills-bradesco-tab" 
-                        tabIndex="0"
-                    >
-                        <img src={loader} alt="loader" title="loader" />                        
-                    </div>
-                    <div 
-                        className="tab-pane fade" 
-                        id="pills-next" 
-                        role="tabpanel" 
-                        aria-labelledby="pills-next-tab" 
-                        tabIndex="0"
-                    >
-                        <img src={loader} alt="loader" title="loader" />                                                
-                    </div>
-                    <div 
-                        className="tab-pane fade" 
-                        id="pills-itau" 
-                        role="tabpanel" 
-                        aria-labelledby="pills-itau-tab" 
-                        tabIndex="0"
-                    >
-                        <img src={loader} alt="loader" title="loader" />  
-                    </div>
+                <div className={expand === true ? "collapse show" : "collapse"}>                    
+                    {
+                        expand !== true ? 
+                            <img src={loader} alt="loader" title="loader" />
+                            : 
+                            <TabelaCalculo valor={credito} prazo={prazo} taxa={taxa}/>
+                    }                    
                 </div>
             </Card.Body>
         </Card>

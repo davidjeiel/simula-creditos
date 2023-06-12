@@ -8,6 +8,7 @@ import ContextoSimulacao from '../../common/context/ContextoSimulacao.js';
 import Modal from '../Modal';
 import verificarQuantidadeParcelas from '../../utils/verificaQuantidadeDeParcelas';
 import Produtos from '../../data/Produtos';
+import { CardBancos } from '../open/CardBancos';
 
 export default function Simula()
 {
@@ -111,8 +112,8 @@ export default function Simula()
                 <div className='collapse' id='lista-produtos'>
                     <Produtos />
                 </div>
-                <div className='collapse' id='lista-bancos'>
-                    Outros bancos
+                <div className='pt-2' id='lista-bancos'>
+                    <CardBancos credito={credito} prazo={parcelas}/>
                 </div>
             </div>
             {modal}

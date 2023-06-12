@@ -12,7 +12,6 @@ export default function App()
       <Menu />
       <Simula />    
       <Parcelas />    
-      <CardBancos />  
     </ProviderSimulacao>    
   );
 }

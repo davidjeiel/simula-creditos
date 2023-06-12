@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatarValorMonetario } from '../utils/formatarValorMonetario';
+import { formatarValorMonetario } from '../../utils/formatarValorMonetario';
 
 export function TabelaCalculo({ valor, prazo, taxa }) 
 {
@@ -19,12 +19,14 @@ export function TabelaCalculo({ valor, prazo, taxa })
   for (let i = 1; i <= prazo; i++) {
     const juros = saldoDevedor * (taxa / 100);
     const amortizacao = valorParcela - juros;
+    const parcela = juros + amortizacao;
     saldoDevedor -= amortizacao;
 
     parcelas.push({
       numero: i,
-      juros: juros.toFixed(2),
+      juros: juros.toFixed(2),      
       amortizacao: amortizacao.toFixed(2),
+      parcela: parcela.toFixed(2),
       saldoDevedor: saldoDevedor.toFixed(2),
     });
   }
@@ -34,8 +36,9 @@ export function TabelaCalculo({ valor, prazo, taxa })
       <thead>
         <tr>
           <th>Parcela</th>
-          <th>Juros</th>
           <th>Amortização</th>
+          <th>Juros</th>
+          <th>Prestação</th>
           <th>Saldo Devedor</th>
         </tr>
       </thead>
@@ -43,8 +46,9 @@ export function TabelaCalculo({ valor, prazo, taxa })
         {parcelas.map((parcela) => (
           <tr key={parcela.numero}>
             <td>{parcela.numero}</td>
-            <td>{ parseFloat( parcela.juros )}</td>
             <td>{formatarValorMonetario(parcela.amortizacao)}</td>
+            <td>{formatarValorMonetario( parcela.juros )}</td>
+            <td>{formatarValorMonetario(parcela.parcela)}</td>
             <td>{formatarValorMonetario(parcela.saldoDevedor)}</td>
           </tr>
         ))}
