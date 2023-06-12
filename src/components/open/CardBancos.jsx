@@ -1,17 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import loader  from '../../assets/gif/loader.gif'
-import { Itau, Bradesco, DadosBacen } from "../../data/DadosBancos";
+import { Itau, Bradesco } from "../../data/DadosBancos";
 
 export function CardBancos(params)
 {
+    const [ dadosBacen, setDadosBacen ] = useState([])
     const capturaDados = async ()=>{
-        const API = await DadosBacen();
-        await console.debug(API);        
+        const endpoint = 'https://olinda.bcb.gov.br/olinda/servico/taxaJuros/versao/v2/odata/ConsultaUnificada';
+        const params = new URLSearchParams({
+            $top: 100,
+            $format: 'json',
+            $select: 'codigoSegmento,Segmento,codigoModalidade,Modalidade,Posicao,InstituicaoFinanceira,TaxaJurosAoMes,cnpj8',
+        });
+
+        const url = `${endpoint}?${params}`;
+
+        fetch(url)
+        .then(async response => {
+            if (!response.ok) {
+                throw new Error('Erro ao fazer a requisição. Status: ' + response.status);
+            }
+            return await response.json();
+        })
+        .then(async data => {
+            setDadosBacen( await data.value); 
+            console.debug(dadosBacen)                   
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
     }
 
     useEffect(()=>{
         capturaDados();
+        console.debug(dadosBacen);
     }, [])
 
     return(
