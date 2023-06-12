@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "./static/js/main.c63b95e0.js",
+    "main.js": "./static/js/main.e3e49722.js",
     "static/media/loader.gif": "./static/media/loader.81e4bae9e6debe2ca0ee.gif",
     "static/media/CAIXA_volume_negativa.png": "./static/media/CAIXA_volume_negativa.970966418742ab84f966.png",
     "index.html": "./index.html",
-    "main.c63b95e0.js.map": "./static/js/main.c63b95e0.js.map"
+    "main.e3e49722.js.map": "./static/js/main.e3e49722.js.map"
   },
   "entrypoints": [
-    "static/js/main.c63b95e0.js"
+    "static/js/main.e3e49722.js"
   ]
 }

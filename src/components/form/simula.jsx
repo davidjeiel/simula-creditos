@@ -55,44 +55,47 @@ export default function Simula()
             <div className="row pt-5">
                 <div className="col-md-3"></div>               
                 <div className="col-md-2 text-center">
-                    <TextField
+                    <label className='fs-4'>Valor</label>
+                    <input
                         id="outlined-credito-input"
                         label="Valor desejado"
+                        className='text-outline-dark'
                         type="number"
-                        style={{ height: "80px", width: "100%" }}
+                        style={{ height: "80px", width: "100%", fontSize: "140%", textAlign: "center"}}
                         onChange={ (e)=>handleChangeCredito(e.target.value) }
                     />
                 </div>
                 <div className="col-md-2 text-center">
-                    <TextField
+                    <label className='fs-4'>Prazo</label>
+                    <input
                         id="outlined-parcela-input"
                         label="Prazo"
                         type="number"
-                        style={{ height: "80px", width: "100%" }}
+                        className='text-outline-dark'
+                        style={{ height: "80px", width: "100%" , fontSize: "140%", textAlign: "center"}}
                         onChange={ (e)=>{
                             return handleChangeParcela(e.target.value);
                         } }
                     />
                 </div>
-                <div className="col-md-2">
-                    <Button 
-                        variant='outline-primary' 
-                        className='text-uppercase fs-bold'
+                <div className="col-md-2" style={{paddingTop: "32px"}}>
+                    <button 
+                        className='text-uppercase fs-bold btn btn-outline-secondary'
                         onClick={ handleSimula }
-                        style={{ height: "56px", width: "100%" }}
+                        style={{ height: "80px", width: "100%" }}
                     >
                         <AttachMoneyIcon />
                         Simular
-                    </Button>
+                    </button>
                 </div>
                 <div className="col-md-3"></div>
             </div>
-            <div className='row'>
+            <div className='row mt-5'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6 text-center'>
                     <ButtonGroup>
                         <Button 
-                            variant="outline-primary" 
+                            variant="outline-secondary" 
                             aria-label="Tabela de Produtos"  
                             type="button" 
                             className='text-uppercase fs-bold'

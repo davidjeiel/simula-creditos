@@ -2,6 +2,7 @@
 ## **FrontEnd**
 
 ![Imagem Site](/public/img/screenshot.png)
+![Imagem Site](/public/img/screenshot-dark.png)
 
 ### Desafio Hackaton CAIXA
 
