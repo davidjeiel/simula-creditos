@@ -54,8 +54,6 @@ curl -X 'POST' \
 
 ### Escopo 
 
-O Simula Créditos é um projeto que permite simular o valor das parcelas de crédito para diferentes produtos com base nos limites de valor definidos.
-
 Este projeto consiste em uma aplicação web que permite aos usuários simular o valor das parcelas de crédito para diferentes produtos. Os produtos são pré-definidos com limites de valor e quantidade máxima de parcelas.
 
 ### Funcionalidades
@@ -63,7 +61,8 @@ Este projeto consiste em uma aplicação web que permite aos usuários simular o
 - Verificação se a quantidade de parcelas inseridas supera a quantidade máxima permitida para cada produto.
 - Interface de usuário intuitiva e responsiva.
 
-
+## Diferencial
+O sistema oferece ao usuário a possibilidade de simular seu crédito por outras instituições financeiras, usando API aberta de open finance disponibilizadas pelo BACEN.
 
 ## **Tecnologias usadas**
 
